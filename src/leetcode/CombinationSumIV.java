@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 /*
 	Given an integer array with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.
 	
@@ -36,7 +39,8 @@ public class CombinationSumIV {
     }
 	
 	private HashSet<ArrayList<Integer>> findComb(int[] nums, int start, int target) {
-		
+		HashSet<ArrayList<Integer>> set = new HashSet<>();
+		return set;
 	}
 
 	public static void main(String[] args) {
