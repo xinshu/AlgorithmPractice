@@ -1,5 +1,6 @@
 package leetcode;
 
+
 /*
 	We are playing the Guess Game. The game is as follows:
 	
@@ -27,12 +28,37 @@ package leetcode;
 public class GuessNumberHigherOrLowerII {
 
 	public int getMoneyAmount(int n) {
-        
+		int[][] mem = new int[n + 1][n + 1];
+		for (int i = 0; i <= n; i++) {
+			for (int j = 0; j <= n; j++) {
+				mem[i][j] = Integer.MAX_VALUE;
+			}
+		}
+		return dpr(1, n, mem);
     }
+	
+	private int dpr(int i, int j, int[][] mem) {
+		if (mem[i][j] != Integer.MAX_VALUE) {
+			return mem[i][j];
+		}
+		if (i == j) {
+			mem[i][j] = 0;
+		}
+		if (j - i == 1) {
+			mem[i][j] = i;
+		}
+		for (int k = i + 1; k < j; k++) {
+			int cur = Math.max(dpr(i, k - 1, mem), dpr(k + 1, j, mem)) + k;
+			mem[i][j] = Math.min(mem[i][j], cur);
+		}
+		return mem[i][j];
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		GuessNumberHigherOrLowerII test = new GuessNumberHigherOrLowerII();
+		int n = 12;
+		int res = test.getMoneyAmount(n);
+		System.out.println(res);
 	}
 
 }
