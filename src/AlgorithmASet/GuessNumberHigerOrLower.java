@@ -1,4 +1,4 @@
-package leetcode;
+package AlgorithmASet;
 
 /*
 	We are playing the Guess Game. The game is as follows:
